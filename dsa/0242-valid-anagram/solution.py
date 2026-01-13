@@ -1,18 +1,13 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        s_map = {}
-        t_map = {}
+        if len(s) != len(t):    
+            return False
 
-        for i in s:
-            if i not in s_map:
-                s_map[i] = 1
-            else:
-                s_map[i] += 1 
-        
-        for j in t:
-            if j not in t_map:
-                t_map[j] = 1
-            else:
-                t_map[j] += 1
-            
-        return s_map == t_map
+        count = [0] * 26
+        for ch in range(len(s)):
+            count[ord(s[ch]) - ord('a')] += 1
+            count[ord(t[ch]) - ord('a')] -= 1
+        for value in count:
+            if value != 0:
+                return False
+        return True
