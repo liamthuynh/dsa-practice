@@ -15,5 +15,4 @@ class Solution:
                 list2 = list2.next
             tail = tail.next
         tail.next = list1 or list2
-
         return dummy.next
